@@ -23,23 +23,6 @@ pipeline {
             }
         }
 
-//         stage('Deploy') {
-//             steps {
-//                 echo 'Deploying application...'
-//                 sh './deploy.sh'
-//             }
-//         }
     }
 
-//     post {
-//         always {
-//             echo 'Pipeline execution completed.'
-//         }
-//         success {
-//             echo 'Build was successful!'
-//         }
-//         failure {
-//             echo 'Build failed.'
-//         }
-//     }
 }
