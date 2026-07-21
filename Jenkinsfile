@@ -24,7 +24,6 @@ pipeline {
                 always{
                     junit 'target/surefire-reports/*.xml'
 
-                    recordCoverage(tools: [[pattern: 'target/site/jacoco/jacoco.xml']])
                 }
             }
         }
@@ -42,6 +41,12 @@ pipeline {
                         echo 'Running tests...'
                         sh 'mvn verify '
                     }
+                    post{
+                                    always{
+
+                                        recordCoverage(tools: [[pattern: 'target/site/jacoco/jacoco.xml']])
+                                    }
+                                }
                 }
 
     }
