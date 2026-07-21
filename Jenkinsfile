@@ -51,7 +51,7 @@ pipeline {
         stage('sonar-analysis') {
                             steps {
                                 echo 'Sonar ...'
-                                withSonarQubeEnv {
+                                withSonarQubeEnv("Sonar-Local") {
                                     sh "mvn sonar:sonar -Dsonar.projectKey=springboot-local"
                                 }
                             }
