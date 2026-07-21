@@ -22,6 +22,13 @@ pipeline {
             }
         }
 
+        stage('Run') {
+                    steps {
+                        echo 'Running tests...'
+                        sh 'java -jar target/jenkins-maven-tut1-1.0-SNAPSHOT.jar'
+                    }
+                }
+
     }
 
 }
