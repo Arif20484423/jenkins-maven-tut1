@@ -51,7 +51,9 @@ pipeline {
         stage('sonar-analysis') {
                             steps {
                                 echo 'Sonar ...'
-                                sh 'mvn sonar:sonar -Dsonar.projectKey=springboot-local -Dsonar.host.url=http://localhost:9000 -Dsonar.login=squ_442d782f60d597d942377b5e15c34fa69d5b44fd'
+                                withSonarQubeEnv {
+                                    sh "mvn sonar:sonar -Dsonar.projectKey=springboot-local"
+                                }
                             }
                         }
 
