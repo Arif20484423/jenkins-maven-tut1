@@ -11,7 +11,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building application...'
-                sh 'mvn clean package -DskipTests'
+                sh 'mvn clean compile'
             }
         }
 
@@ -20,12 +20,25 @@ pipeline {
                 echo 'Running tests...'
                 sh 'mvn test'
             }
+            post{
+                always{
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
         }
+
+
+        stage('Package') {
+                    steps {
+                        echo 'Running tests...'
+                        sh 'mvn package'
+                    }
+                }
 
         stage('Run') {
                     steps {
                         echo 'Running tests...'
-                        sh 'java -jar target/jenkins-maven-tut1-1.0-SNAPSHOT.jar'
+                        sh 'mvn verify '
                     }
                 }
 
