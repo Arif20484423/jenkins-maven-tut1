@@ -57,6 +57,24 @@ pipeline {
                             }
                         }
 
+
+
+         stage('quality-gate') {
+                                     steps {
+                                         echo 'Quality gate'
+                                         timeout(5) {
+                                             waitForQualityGate true
+                                         }
+                                     }
+                                 }
+
+              stage('run') {
+                                                  steps {
+                                                      echo 'Run'
+                                                      sh "java -jar target/jenkins-maven-tut1-1.0-SNAPSHOT.jar"
+                                                  }
+                                              }
+
     }
 
 }
