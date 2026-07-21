@@ -11,7 +11,7 @@ public class App
     {
         System.out.println("MAIN");
         int a = 23;
-        String pass = "adminsh123";
+        String pass = "admin12345";
         System.out.println(a);
     }
 }
