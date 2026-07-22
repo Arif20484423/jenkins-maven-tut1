@@ -11,7 +11,7 @@ pipeline {
                 sh "docker build -t arif2048/app:${BUILD_NUMBER} ."
             }
         }
-        stage('push-to-docker'){
+        stage('docker-login'){
             steps{
                  withCredentials([usernamePassword(
                                             credentialsId: 'docker-creds',
@@ -23,7 +23,7 @@ pipeline {
                                         }
             }
         }
-        stage('docker-login'){
+        stage('push-to-docker'){
                     steps{
                         sh 'docker push arif2048/app:${BUILD_NUMBER}'
                     }
