@@ -13,9 +13,23 @@ pipeline {
         }
         stage('push-to-docker'){
             steps{
-                sh 'docker push arif2048/app:${BUILD_NUMBER}'
+                 withCredentials([usernamePassword(
+                                            credentialsId: 'docker-creds',
+                                            usernameVariable: 'DOCKER_USER',
+                                            passwordVariable: 'DOCKER_PASS'
+                                        )]) {
+                                            sh "docker login -u $DOCKER_USER -p $DOCKER_PASS"
+
+                                        }
             }
         }
+        stage('docker-login'){
+                    steps{
+                        sh 'docker push arif2048/app:${BUILD_NUMBER}'
+                    }
+                }
+
+
 
 //         stage('Build') {
 //             steps {
