@@ -8,7 +8,12 @@ pipeline {
     stages {
         stage("docker-build"){
             steps{
-                sh "docker build -t app:${BUILD_NUMBER} ."
+                sh "docker build -t arif2048/app:${BUILD_NUMBER} ."
+            }
+        }
+        stage('push-to-docker'){
+            steps{
+                sh 'docker push '
             }
         }
 
