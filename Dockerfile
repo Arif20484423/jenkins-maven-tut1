@@ -13,6 +13,7 @@ COPY src ./src
 # Build the application
 RUN mvn clean package -DskipTests
 
+
 # Stage 2: Create runtime image
 FROM eclipse-temurin:21-jre
 
