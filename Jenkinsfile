@@ -13,7 +13,7 @@ pipeline {
         }
         stage('push-to-docker'){
             steps{
-                sh 'docker push '
+                sh 'docker push arif2048/app:${BUILD_NUMBER}'
             }
         }
 
