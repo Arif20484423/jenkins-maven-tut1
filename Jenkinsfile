@@ -5,7 +5,6 @@ pipeline {
       maven 'jenkins-maven'
     }
 
-
     stages {
         stage("docker-build"){
             steps{
